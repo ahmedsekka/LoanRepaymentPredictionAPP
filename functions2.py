@@ -18,12 +18,6 @@ import pickle
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score, roc_curve, precision_recall_curve
 import re
 
-@st.cache_data
-def show_data_to_upload():
-    data_to_upload = pd.read_csv("data_test.csv")
-    csv_file = data_to_upload.to_csv(index=False)
-    return csv_file
-
 def get_table_download_link(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode())
