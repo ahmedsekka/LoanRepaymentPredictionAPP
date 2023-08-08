@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
-from functions2 import get_table_download_link, get_image_download_link, preprocessing, best_performances, plots, shap_plots, show_data_to_upload
+from functions2 import get_table_download_link, get_image_download_link, preprocessing, best_performances, plots, shap_plots
 import shap
 shap.initjs()
 
@@ -60,7 +60,8 @@ with st.sidebar:
         if st.session_state.button_clicked is None:
             st.divider()
             st.markdown("*Vous pouvez télécharger le fichier CSV pour l'uploader:*")
-            csv_content = show_data_to_upload()
+            data_to_upload = pd.read_csv("data_test.csv")
+            csv_content = data_to_upload.to_csv(index=False)
             st.session_state.button_clicked = st.download_button(
                     label="Click here to download CSV File",
                     data=csv_content,
